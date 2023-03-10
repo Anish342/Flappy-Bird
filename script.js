@@ -1,6 +1,9 @@
 var hole = document.getElementById("hole");
 var game = document.getElementById("game");
 var score = 0;
+
+var highscore = localStorage.getItem("highscore");
+
 var result = document.getElementById("result");
 var text = document.getElementById("text");
 var jumping=0;
@@ -26,8 +29,17 @@ var fall = setInterval(function(){
     var htop = (500+holetop);
    
     if ((birdtop>450) || ((blockleft<50) && (blockleft>-50) && ((birdtop<htop)||(birdtop>htop+100)))){
+        if(highscore !== null){
+            if (score > highscore) {
+                localStorage.setItem("highscore", score);      
+            }
+        }
+        else{
+            localStorage.setItem("highscore", score);
+        }
+        highscore = localStorage.getItem("highscore");
         result.style.display="block";
-        text.innerText = "Your Final Score is: "+score;
+        text.innerText = "Your Final Score is: "+score + '\nHigh Score: '+highscore;
         game.style.display='none';
         
     }
