@@ -1,2 +1,2 @@
 # Flappy-Bird
-A replica of Flappy bird.
+A not too accurate replica of Flappy bird.
